@@ -1,10 +1,16 @@
 # 🔐 Projeto CP5 - Comunicação Cliente-Servidor com Criptografia RSA
 
+## Autores 
+- **RM555997** - Caio Marques
+- **RM558640** - Caio Amarante
+- **RM556325** - Felipe Camargo Revolta e Souza
+- **Turma** - 2TDSR
+
 ## 📋 Descrição do Projeto
 
 Este projeto implementa um sistema de comunicação segura entre Cliente e Servidor utilizando o algoritmo de criptografia **RSA (Rivest-Shamir-Adleman)**. A aplicação demonstra na prática como funciona a troca de chaves públicas e a comunicação criptografada através de sockets TCP/IP.
 
-O projeto foi desenvolvido como parte do **Checkpoint 5** da disciplina, com foco em segurança da informação e programação de redes.
+O projeto foi desenvolvido como parte do **Checkpoint 5** da disciplina Java Advanced.
 
 ---
 
@@ -22,8 +28,7 @@ O projeto foi desenvolvido como parte do **Checkpoint 5** da disciplina, com foc
 
 **IntelliJ IDEA** - IDE utilizada para o desenvolvimento completo do projeto.
 
-![Screenshot da IDE IntelliJ IDEA]
-<!-- 📸 COLE AQUI: Screenshot da IDE IntelliJ IDEA mostrando a estrutura do projeto -->
+<img width="77" height="88" alt="image" src="https://github.com/user-attachments/assets/88edf077-cfc7-430e-ae87-610d4fc484bc" />
 
 ---
 
@@ -52,9 +57,6 @@ CP5-Parte-1/
 └── README.md                                 # Este arquivo
 ```
 
-![Estrutura do Projeto]
-<!-- 📸 COLE AQUI: Screenshot da estrutura de pastas do projeto no IntelliJ -->
-
 ---
 
 ## 🔢 Algoritmo RSA Implementado
@@ -72,6 +74,34 @@ O projeto utiliza valores específicos validados pela calculadora RSA da Drexel 
 | **e** | 7 | Expoente público |
 | **d** | 19 | Expoente privado |
 
+### Execução
+
+#### Passo 1: Iniciar o Servidor
+
+Abra um terminal e execute:
+
+```bash
+java -cp target\classes br.com.fiap.Server
+```
+
+#### Passo 2: Iniciar o Cliente
+
+Abra **outro terminal** e execute:
+
+```bash
+java -cp target\classes br.com.fiap.Client
+```
+
+#### Passo 3: Digitar a Mensagem
+
+Quando solicitado, digite a mensagem que deseja enviar (exemplo: "OLA"):
+
+```
+[CLIENTE] Digite a mensagem a ser enviada: OLA
+```
+
+---
+
 ### Exemplo de Criptografia
 
 Para a mensagem **"OLA"**:
@@ -82,32 +112,28 @@ Para a mensagem **"OLA"**:
 4. **Mensagem Descriptografada**: 79 76 65
 5. **Resultado**: OLA ✅
 
-![Teste do RSA]
-<!-- 📸 COLE AQUI: Screenshot da execução do TestRSA.java mostrando os valores acima -->
 
-### Fórmulas Matemáticas
+### Exemplo:
+Inicializando o Server:
+<img width="1622" height="306" alt="image" src="https://github.com/user-attachments/assets/8eb6649e-e712-48b8-89b3-10a55e4b067b" />
 
-**Criptografia:**
-```
-C = M^e mod N
-```
-Onde:
-- C = mensagem criptografada
-- M = mensagem original (valor ASCII)
-- e = expoente público
-- N = módulo
+Enviando a mensagem OLA pelo Client:
+<img width="1353" height="780" alt="image" src="https://github.com/user-attachments/assets/4830fb31-cf01-4d01-8196-0467f8714bfb" />
 
-**Descriptografia:**
-```
-M = C^d mod N
-```
-Onde:
-- M = mensagem descriptografada
-- C = mensagem criptografada
-- d = expoente privado
-- N = módulo
+Resultado:
+- Client:
+<img width="715" height="397" alt="image" src="https://github.com/user-attachments/assets/60721f1e-939e-40cd-84ff-05ae26ae5e8f" />
+
+- Server:
+<img width="781" height="680" alt="image" src="https://github.com/user-attachments/assets/8f025905-c8a3-416a-8083-51a28394854b" />
 
 ---
+
+### Print calculadora RSA - Drexel University:
+<img width="1920" height="884" alt="image" src="https://github.com/user-attachments/assets/c97a36b1-e2fb-4c96-a421-7d825bafd855" />
+<img width="1898" height="277" alt="image" src="https://github.com/user-attachments/assets/8757e680-0c1a-495c-becb-27ee40250e37" />
+<img width="1893" height="625" alt="image" src="https://github.com/user-attachments/assets/995a0212-a6d7-4f6e-8942-5075acd1f20f" />
+
 
 ## 🔄 Fluxo de Comunicação
 
@@ -165,197 +191,6 @@ mvn clean compile
 ```bash
 javac -d target\classes src\main\java\br\com\fiap\*.java
 ```
-
-### Execução
-
-#### Passo 1: Iniciar o Servidor
-
-Abra um terminal e execute:
-
-```bash
-java -cp target\classes br.com.fiap.Server
-```
-
-![Servidor Iniciado]
-<!-- 📸 COLE AQUI: Screenshot do servidor iniciado, aguardando conexão -->
-
-#### Passo 2: Iniciar o Cliente
-
-Abra **outro terminal** e execute:
-
-```bash
-java -cp target\classes br.com.fiap.Client
-```
-
-#### Passo 3: Digitar a Mensagem
-
-Quando solicitado, digite a mensagem que deseja enviar (exemplo: "OLA"):
-
-```
-[CLIENTE] Digite a mensagem a ser enviada: OLA
-```
-
-![Cliente Executando]
-<!-- 📸 COLE AQUI: Screenshot do cliente solicitando a mensagem -->
-
----
-
-## 📊 Resultados e Exemplos
-
-### Exemplo 1: Enviando "OLA"
-
-#### Saída do Cliente:
-
-```
-╔════════════════════════════════════════╗
-║         CLIENTE TCP - CP5              ║
-║      Conectando ao servidor...         ║
-╚════════════════════════════════════════╝
-
-[CLIENTE] ✅ Conectado ao servidor em localhost:5000
-
-[CLIENTE] Minhas chaves:
-Chave Pública: (e=7, n=161)
-Chave Privada: (d=19, n=161)
-
-╔════════════════════════════════════════╗
-║       ETAPA 1: TROCA DE CHAVES         ║
-╚════════════════════════════════════════╝
-
-[CLIENTE] Recebido chave pública do servidor: 7,161
-[CLIENTE] Chave do servidor: e=7, n=161
-[CLIENTE] Enviando minha chave pública: (7, 161)
-
-╔════════════════════════════════════════╗
-║    ETAPA 2: COMUNICAÇÃO CRIPTOGRAFADA  ║
-╚════════════════════════════════════════╝
-
-[CLIENTE] Digite a mensagem a ser enviada: OLA
-[CLIENTE] Mensagem original: OLA
-[CLIENTE] Mensagem na forma numérica: 079 076 065
-[CLIENTE] Mensagem criptografada: 37 97 107
-[CLIENTE] ✅ Mensagem enviada
-
-[CLIENTE] Resposta criptografada recebida: 143 109 143 32 ...
-[CLIENTE] Resposta descriptografada: ACK - Recebi: OLA
-```
-
-![Saída Completa do Cliente]
-<!-- 📸 COLE AQUI: Screenshot completo da saída do cliente após enviar "OLA" -->
-
-#### Saída do Servidor:
-
-```
-╔════════════════════════════════════════╗
-║         SERVIDOR TCP - CP5             ║
-║      Aguardando conexão...             ║
-╚════════════════════════════════════════╝
-
-[SERVIDOR] Aguardando na porta 5000...
-[SERVIDOR] ✅ Cliente conectado! IP: 127.0.0.1
-
-[SERVIDOR] Minhas chaves:
-Chave Pública: (e=7, n=161)
-Chave Privada: (d=19, n=161)
-
-╔════════════════════════════════════════╗
-║       ETAPA 1: TROCA DE CHAVES         ║
-╚════════════════════════════════════════╝
-
-[SERVIDOR] Enviando chave pública: (7, 161)
-[SERVIDOR] Recebido chave pública do cliente: 7,161
-[SERVIDOR] Chave do cliente: e=7, n=161
-
-╔════════════════════════════════════════╗
-║    ETAPA 2: COMUNICAÇÃO CRIPTOGRAFADA  ║
-╚════════════════════════════════════════╝
-
-[SERVIDOR] 📩 Mensagem criptografada recebida:
-           37 97 107
-
-[SERVIDOR] 🔓 Mensagem descriptografada:
-           OLA
-
-[SERVIDOR] Preparando resposta: ACK - Recebi: OLA
-[SERVIDOR] Resposta criptografada: 143 109 143 32 ...
-[SERVIDOR] ✅ Resposta enviada
-```
-
-![Saída Completa do Servidor]
-<!-- 📸 COLE AQUI: Screenshot completo da saída do servidor ao receber "OLA" -->
-
----
-
-### Exemplo 2: Enviando "TESTE"
-
-#### Saída do Cliente (Resumida):
-
-```
-[CLIENTE] Digite a mensagem a ser enviada: TESTE
-[CLIENTE] Mensagem original: TESTE
-[CLIENTE] Mensagem na forma numérica: 084 069 083 084 069
-[CLIENTE] Mensagem criptografada: 97 33 16 97 33
-[CLIENTE] ✅ Mensagem enviada
-```
-
-![Cliente enviando TESTE]
-<!-- 📸 COLE AQUI: Screenshot do cliente enviando a palavra "TESTE" -->
-
-#### Saída do Servidor (Resumida):
-
-```
-[SERVIDOR] 📩 Mensagem criptografada recebida:
-           97 33 16 97 33
-
-[SERVIDOR] 🔓 Mensagem descriptografada:
-           TESTE
-```
-
-![Servidor recebendo TESTE]
-<!-- 📸 COLE AQUI: Screenshot do servidor recebendo e descriptografando "TESTE" -->
-
----
-
-## 🧪 Teste Unitário do RSA
-
-O projeto inclui uma classe `TestRSA.java` para validação dos valores:
-
-### Como Executar o Teste:
-
-```bash
-java -cp target\classes br.com.fiap.TestRSA
-```
-
-### Resultado Esperado:
-
-```
-=== TESTE RSA - Valores da Drexel University ===
-p = 23
-q = 7
-N = p*q = 161
-r = (p-1)*(q-1) = 132
-e = 7
-d = 19
-
-Mensagem = OLA
-Mensagem na forma numerica:
-079 076 065 
-
-Mensagem encriptada:
-37 97 107
-
-Mensagem descriptografada:
-79 76 65 
-
-Mensagem decodificada:
-OLA
-
-✓ TESTE PASSOU! Resultados correspondem exatamente aos da Drexel University.
-```
-
-![Teste RSA Executado]
-<!-- 📸 COLE AQUI: Screenshot do teste unitário do RSA sendo executado com sucesso -->
-
 ---
 
 ## 📝 Descrição das Classes
@@ -377,9 +212,6 @@ Implementa o algoritmo de criptografia RSA.
 - `descriptografar(String mensagemCriptografada)`: Descriptografa usando chave privada
 - `exibirChaves()`: Exibe as chaves pública e privada
 
-![Código RSA.java]
-<!-- 📸 COLE AQUI: Screenshot do código da classe RSA.java no IntelliJ -->
-
 ---
 
 ### 2. Server.java
@@ -398,9 +230,6 @@ Implementa o servidor TCP que aguarda conexões.
 - `trocarChaves()`: Realiza troca de chaves públicas
 - `comunicar()`: Gerencia a comunicação criptografada
 - `fecharConexao()`: Encerra a conexão
-
-![Código Server.java]
-<!-- 📸 COLE AQUI: Screenshot do código da classe Server.java no IntelliJ -->
 
 ---
 
@@ -421,10 +250,6 @@ Implementa o cliente TCP que se conecta ao servidor.
 - `trocarChaves()`: Realiza troca de chaves públicas
 - `comunicar()`: Gerencia entrada do usuário e comunicação criptografada
 - `fecharConexao()`: Encerra a conexão
-
-![Código Client.java]
-<!-- 📸 COLE AQUI: Screenshot do código da classe Client.java no IntelliJ -->
-
 ---
 
 ## 🔒 Conceitos de Segurança Aplicados
